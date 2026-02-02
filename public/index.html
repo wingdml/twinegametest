@@ -143,13 +143,21 @@ Enter your message:
 
 &lt;div id=&quot;sharedOutput&quot;&gt;&lt;/div&gt;
 
+&lt;script&gt;
+// When this passage loads, ask the server for history again
+  if (typeof socket !== &#39;undefined&#39;) {
+    socket.emit(&#39;requestHistory&#39;);
+  }
+
 You’re holding a shiny red apple. The Narrator’s voice echoes:  
 &lt;span class=&quot;npcname&quot;&gt;&lt;&lt;= $npc1Name &gt;&gt;&lt;/span&gt; hesitantly approaches you.  
 “Noble Player, please polish the apple and bring it to Jerry.”
 
 [[Polish the apple-&gt;Polished Apple]]  
 [[Eat the apple-&gt;Off Script Glitch]]  
-[[Drop the apple and leave-&gt;Off Script Glitch]]</tw-passagedata><tw-passagedata pid="2" name="Polished Apple" tags="" position="187.5,350" size="100,100">:: Polished Apple
+[[Drop the apple and leave-&gt;Off Script Glitch]]
+&lt;/script&gt;
+</tw-passagedata><tw-passagedata pid="2" name="Polished Apple" tags="" position="187.5,350" size="100,100">:: Polished Apple
 You dutifully polish the apple. Jerry the NPC nods and takes it from you.
 
 The Narrator sighs with satisfaction.
