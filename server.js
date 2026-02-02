@@ -18,10 +18,17 @@ io.on('connection', (socket) => {
   // Send existing messages to the new client
   socket.emit('loadMessages', messages);
 
+  // Listen for new messages
   socket.on('playerMessage', (msg) => {
     messages.push(msg);
     io.emit('broadcastMessage', msg);
   });
+  // Listen for explicit history requests (e.g. when a passage reloads)
+  socket.on('requestHistory', () => {
+    socket.emit('loadMessages', messages);
+  });
+
+
 });
 
 // Use Render’s dynamic port (or fallback to 2433 locally)
