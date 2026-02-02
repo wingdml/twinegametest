@@ -10,11 +10,16 @@ const io = new Server(server);
 app.use(express.static('public'));
 
 // Handle player connections
+const messages = []; // store all messages in memory
+
 io.on('connection', (socket) => {
   console.log('A player connected');
 
+  // Send existing messages to the new client
+  socket.emit('loadMessages', messages);
+
   socket.on('playerMessage', (msg) => {
-    // Broadcast to all players
+    messages.push(msg);
     io.emit('broadcastMessage', msg);
   });
 });
