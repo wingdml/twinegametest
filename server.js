@@ -19,7 +19,8 @@ io.on('connection', (socket) => {
   });
 });
 
-// Start server on port 2433
-server.listen(2433, () => {
-  console.log('Server running on http://localhost:2433');
+// Use Render’s dynamic port (or fallback to 2433 locally)
+const PORT = process.env.PORT || 2433;
+server.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
