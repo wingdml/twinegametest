@@ -281,7 +281,7 @@ To re-enable it, delete the /% on the first line and the %/ on the last line.
   /* 1. DEFINE the master list of all items first. */
   
 /%
-  /* 2. Create a shuffled copy and assign random defaults. */
+  /* 2. Create a shuffled copy and assign random defaults. 
   &lt;&lt;set _shuffledItems to clone($allItems).shuffle()&gt;&gt;
 
   &lt;&lt;set $Protagonist to _shuffledItems.pop()&gt;&gt;
@@ -300,7 +300,7 @@ To re-enable it, delete the /% on the first line and the %/ on the last line.
   &lt;&lt;set $Villain to _shuffledItems.pop()&gt;&gt;
 &lt;&lt;/silently&gt;&gt;
 %/
-
+*/
 socket.on(&#39;loadDefaults&#39;, (defaults) =&gt; {
   for (const key in defaults) {
     State.variables[key] = defaults[key];
