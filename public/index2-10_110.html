@@ -157,11 +157,6 @@ window.sendInput = function (value) {
 window.updateGlobalVariable = function (key, value) {
   socket.emit('updateVariable', { key, value });
 };</script><tw-passagedata pid="1" name="Apple Duty" tags="" position="250,225" size="100,100">:: Apple Duty
-Enter your message:
-&lt;input id=&quot;playerInput&quot; type=&quot;text&quot;&gt;
-&lt;button onclick=&quot;window.sendInput(document.getElementById(&#39;playerInput&#39;).value)&quot;&gt;Submit&lt;/button&gt;
-&lt;div id=&quot;sharedOutput&quot;&gt;&lt;/div&gt;
-
 You’re holding a shiny red apple. The Narrator’s voice echoes:
 
 &lt;span class=&quot;npcname&quot;&gt;&lt;&lt;= $npc1Name &gt;&gt;&lt;/span&gt; hesitantly approaches you.
@@ -301,13 +296,8 @@ To re-enable it, delete the /% on the first line and the %/ on the last line.
 &lt;&lt;/silently&gt;&gt;
 %/
 
-socket.on(&#39;loadDefaults&#39;, (defaults) =&gt; {
-  for (const key in defaults) {
-    State.variables[key] = defaults[key];
-  }
-});
 /* --- Active Manual Settings --- */
-/* These will be used because the shuffle block above is disabled.
+/* These will be used because the shuffle block above is disabled. */
 &lt;&lt;set $Protagonist to &quot;human&quot;&gt;&gt;
 &lt;&lt;set $Geography to &quot;yarn&quot;&gt;&gt;
 &lt;&lt;set $Climate to &quot;glowing&quot;&gt;&gt;
@@ -321,8 +311,7 @@ socket.on(&#39;loadDefaults&#39;, (defaults) =&gt; {
 &lt;&lt;set $Architecture to &quot;mosaic&quot;&gt;&gt;
 &lt;&lt;set $Time to &quot;spiral&quot;&gt;&gt;
 &lt;&lt;set $Hero to &quot;Longwhisker&quot;&gt;&gt;
-&lt;&lt;set $Villain to &quot;Masked Weaver&quot;&gt;&gt;
- */</tw-passagedata><tw-passagedata pid="12" name="NPC Social" tags="" position="375,100" size="100,100">::NPC Social
+&lt;&lt;set $Villain to &quot;Masked Weaver&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="12" name="NPC Social" tags="" position="375,100" size="100,100">::NPC Social
 
 [[EditSystem]] </tw-passagedata><tw-passagedata pid="13" name="EditSystem" tags="" position="375,225" size="100,100">:: EditSystem
 &lt;h1 style=&quot;text-align:center;&quot;&gt;Make Your Choices&lt;/h1&gt;
