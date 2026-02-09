@@ -155,18 +155,8 @@ window.sendInput = function (value) {
 };
 
 // Send variable updates to server
-window.updateGlobalVariable = function(key, value) {
-  if (window.socket) {
-    // Send the message and provide a function to run when the server acknowledges
-    window.socket.emit('updateVariable', { key: key, value: value }, function(response) {
-      // This part only runs AFTER the server has responded
-      if (response.status === 'ok') {
-        console.log('Server confirmed update for:', key);
-        // Now that the server has the data, we can safely navigate
-        Engine.play('EditSystem'); 
-      }
-    });
-  }
+window.updateGlobalVariable = function (key, value) {
+  socket.emit('updateVariable', { key, value });
 };</script><tw-passagedata pid="1" name="Apple Duty" tags="" position="250,225" size="100,100">:: Apple Duty
 Enter your message:
 &lt;input id=&quot;playerInput&quot; type=&quot;text&quot;&gt;
@@ -375,14 +365,15 @@ socket.on(&#39;loadDefaults&#39;, (defaults) =&gt; {
             &lt;&lt;link _item&gt;&gt;
               &lt;&lt;set $Protagonist to _item&gt;&gt;
               &lt;script&gt;
-                window.updateGlobalVariable(&quot;Protagonist&quot;, tale.get(&#39;_item&#39;));
+              	window.updateGlobalVariable(&quot;Protagonist&quot;, tale.get(&#39;_item&#39;));
               &lt;/script&gt;
-              &lt;!-- The &lt;&lt;goto&gt;&gt; is no longer here! --&gt;
+              &lt;&lt;goto &quot;EditSystem&quot;&gt;&gt;
             &lt;&lt;/link&gt;&gt;&lt;br&gt;
           &lt;&lt;/capture&gt;&gt;
         &lt;&lt;/if&gt;&gt;
       &lt;&lt;/for&gt;&gt;
     &lt;&lt;/linkreplace&gt;&gt;
+    
   &lt;&lt;else&gt;&gt;
     &lt;span style=&quot;font-size:1.5em; color:green;&quot;&gt;&lt;&lt;print $Protagonist&gt;&gt;&lt;/span&gt;&lt;br&gt;
     &lt;&lt;linkreplace &quot;(change)&quot;&gt;&gt;
@@ -394,21 +385,25 @@ socket.on(&#39;loadDefaults&#39;, (defaults) =&gt; {
               &lt;script&gt;
                 window.updateGlobalVariable(&quot;Protagonist&quot;, tale.get(&#39;_item&#39;));
               &lt;/script&gt;
-              &lt;!-- The &lt;&lt;goto&gt;&gt; is no longer here! --&gt;
+              &lt;&lt;goto &quot;EditSystem&quot;&gt;&gt;
             &lt;&lt;/link&gt;&gt;&lt;br&gt;
           &lt;&lt;/capture&gt;&gt;
         &lt;&lt;/if&gt;&gt;
       &lt;&lt;/for&gt;&gt;
+      
       &lt;br&gt;
       &lt;&lt;link &quot;- none -&quot;&gt;&gt;
         &lt;&lt;set $Protagonist to &quot;&quot;&gt;&gt;
         &lt;script&gt;
           window.updateGlobalVariable(&quot;Protagonist&quot;, &quot;&quot;);
         &lt;/script&gt;
-        &lt;!-- The &lt;&lt;goto&gt;&gt; is no longer here! --&gt;
+        &lt;&lt;goto &quot;EditSystem&quot;&gt;&gt;
       &lt;&lt;/link&gt;&gt;
+      
     &lt;&lt;/linkreplace&gt;&gt;
+    
   &lt;&lt;/if&gt;&gt;
+  
 &lt;/div&gt;
 &lt;&lt;/nobr&gt;&gt;
   &lt;!-- Geography --&gt;
