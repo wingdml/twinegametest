@@ -235,7 +235,7 @@ Someone asks, “What’s your job, newcomer?”
 Now you are $npcJob. The world feels smaller, your choices fewer.
 
 &lt;&lt;goto &quot;NPC Social&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="11" name="Story Init backup" tags="" position="250,100" size="100,100">::StoryInit
+&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="11" name="StoryInit" tags="" position="250,100" size="100,100">::StoryInit
 /* Initialize player name components */
 
 
@@ -365,11 +365,9 @@ socket.on(&#39;loadDefaults&#39;, (defaults) =&gt; {
         &lt;span style=&quot;font-size:1.5em; color:green;&quot;&gt;&lt;&lt;print $Protagonist&gt;&gt;&lt;/span&gt;&lt;br&gt;
         &lt;&lt;linkreplace &quot;(change)&quot;&gt;&gt;
           &lt;&lt;for _item range $allItems&gt;&gt;&lt;&lt;if not _used.includes(_item) or _item is $Protagonist&gt;&gt;&lt;&lt;capture _item&gt;&gt;&lt;&lt;link _item&gt;&gt;&lt;&lt;set $Protagonist to _item&gt;&gt;&lt;script&gt;
-  window.updateGlobalVariable(&quot;Protagonist&quot;, tale.get(&#39;_item&#39;));
-&lt;/script&gt;&lt;&lt;goto &quot;EditSystem&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/capture&gt;&gt;&lt;br&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/for&gt;&gt;
-          &lt;br&gt;&lt;&lt;link &quot;— none —&quot;&gt;&gt;&lt;&lt;set $Protagonist to &quot;&quot;&gt;&gt;&lt;script&gt;
-          window.updateGlobalVariable(&quot;Protagonist&quot;, &quot;&quot;);
-        &lt;/script&gt;&lt;&lt;goto &quot;EditSystem&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
+  window.updateGlobalVariable(&quot;Protagonist&quot;, State.variables.Protagonist);
+&lt;/script&gt;&lt;&lt;goto &quot;EditSystem&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/capture&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/for&gt;&gt;
+          &lt;br&gt;&lt;&lt;link &quot;— none —&quot;&gt;&gt;&lt;&lt;set $Protagonist to &quot;&quot;&gt;&gt;&lt;&lt;goto &quot;EditSystem&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
         &lt;&lt;/linkreplace&gt;&gt;
       &lt;&lt;/if&gt;&gt;
     &lt;/div&gt;
@@ -649,44 +647,7 @@ socket.on(&#39;loadDefaults&#39;, (defaults) =&gt; {
 
 [[Confirm|Apple Duty]]
 
-</tw-passagedata><tw-passagedata pid="14" name="System" tags="" position="437.5,350" size="100,100"></tw-passagedata><tw-passagedata pid="15" name="StoryInit" tags="" position="500,125" size="100,100">:: StoryInit
-
-/* Initialize player name components */
-
-
-&lt;&lt;set $playerPrefix to &quot;Player#&quot;&gt;&gt;
-&lt;&lt;set $playerSuffix to &quot;123&quot;&gt;&gt;
-
-/* Flag to track the &quot;glitchy&quot; rename attempt */
-&lt;&lt;set $hasAttemptedRename to false&gt;&gt;
-
-/* Widget to easily display the full name */
-&lt;&lt;widget &quot;printFullName&quot;&gt;&gt;
-    &lt;&lt;print $playerPrefix + $playerSuffix&gt;&gt;
-&lt;&lt;/widget&gt;&gt;
-
-
-&lt;&lt;set $returnCount to 0&gt;&gt;
-&lt;&lt;set $returnBCount to 0&gt;&gt;
-&lt;&lt;set $currentPassage to &quot;0&quot;&gt;&gt;
- &lt;&lt;set $returnFromBubbleParade to false&gt;&gt;
- &lt;&lt;set $followedSameRoute to false&gt;&gt;
-  &lt;&lt;set $collectApplesFirst to false&gt;&gt; 
-  &lt;&lt;set $gainedWeapon to false&gt;&gt;
-  &lt;&lt;set $returnFromSword to false&gt;&gt;
-  &lt;&lt;set $renameStatus to &quot;failed&quot;&gt;&gt;
-  &lt;&lt;set  $collectedApplesTwice to false&gt;&gt;
-  &lt;&lt;set $npc1Name to &quot;Alice&quot;&gt;&gt;
-&lt;&lt;set $npc2Name to &quot;Bob&quot;&gt;&gt;
-
-/* The list of all possible items is fine to keep here */
-&lt;&lt;set $allItems to [
-    &quot;yarn&quot;, &quot;human&quot;, &quot;glowing&quot;, &quot;bubble&quot;, &quot;running&quot;, &quot;night&quot;, &quot;chirping&quot;, &quot;mosaic&quot;, &quot;spiral&quot;,
-    &quot;Longwhisker&quot;, &quot;Masked Weaver&quot;,
-    &quot;apple&quot;, &quot;orange&quot;, &quot;berry&quot;, &quot;cat&quot;, &quot;silly&quot;, &quot;hot&quot;, &quot;water&quot;,
-    &quot;beautiful&quot;, &quot;creamy&quot;, &quot;cake&quot;, &quot;danger&quot;, &quot;road&quot;, &quot;triangle&quot;,
-    &quot;curly&quot;, &quot;threads&quot;, &quot;velvet&quot;, &quot;engine&quot;, &quot;glass&quot;, &quot;melody&quot;, &quot;spicy&quot;
-]&gt;&gt;</tw-passagedata></tw-storydata>
+</tw-passagedata><tw-passagedata pid="14" name="System" tags="" position="437.5,350" size="100,100"></tw-passagedata></tw-storydata>
 	<script src="/socket.io/socket.io.js"></script>
 
   <script id="script-sugarcube" type="text/javascript">
