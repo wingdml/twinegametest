@@ -42,6 +42,7 @@ io.on('connection', (socket) => {
 
   // Listen for updates from players
   socket.on('updateVariable', ({ key, value }) => {
+    console.log("Update received:", key, value); 
     globalDefaults[key] = value; // update server state
     io.emit('loadDefaults', globalDefaults); // broadcast to all players
   });

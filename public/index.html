@@ -364,7 +364,8 @@ socket.on(&#39;loadDefaults&#39;, (defaults) =&gt; {
             &lt;&lt;link _item&gt;&gt;
               &lt;&lt;set $Protagonist to _item&gt;&gt;
               &lt;script&gt;
-                window.updateGlobalVariable(&quot;Protagonist&quot;,  &quot;&lt;&lt;= _item&gt;&gt;&quot;);
+                // Send the updated protagonist value to the server
+                window.updateGlobalVariable(&quot;Protagonist&quot;, State.variables.Protagonist);
               &lt;/script&gt;
               &lt;&lt;goto &quot;EditSystem&quot;&gt;&gt;
             &lt;&lt;/link&gt;&gt;&lt;br&gt;
@@ -381,7 +382,7 @@ socket.on(&#39;loadDefaults&#39;, (defaults) =&gt; {
             &lt;&lt;link _item&gt;&gt;
               &lt;&lt;set $Protagonist to _item&gt;&gt;
               &lt;script&gt;
-                window.updateGlobalVariable(&quot;Protagonist&quot;,  &quot;&lt;&lt;= _item&gt;&gt;&quot;);
+                window.updateGlobalVariable(&quot;Protagonist&quot;, State.variables.Protagonist);
               &lt;/script&gt;
               &lt;&lt;goto &quot;EditSystem&quot;&gt;&gt;
             &lt;&lt;/link&gt;&gt;&lt;br&gt;
