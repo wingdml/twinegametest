@@ -51,18 +51,24 @@ io.on('connection', (socket) => {
 
     // Listen for when a player updates a world variable (e.g., Protagonist).
     socket.on('updateVariable', ({ key, value }, callback) => {
-        console.log(`Update received -> Key: ${key}, Value: ${value}`);
+      console.log(`[LOG] Update received -> Key: ${key}, Value: ${value}`);
 
         // Update the state on the server.
         globalDefaults[key] = value;
+        console.log(`[LOG] Server state for '${key}' is now '${globalDefaults[key]}'`);
 
         // Broadcast the *entire updated state* to EVERYONE connected.
         io.emit('loadDefaults', globalDefaults);
+        console.log('[LOG] Broadcasted new state to all clients.');
 
-        // Send an "OK" acknowledgement back ONLY to the player who sent the update.
-        // This is what triggers the Engine.play() refresh in your game.
-        if (callback) {
+        // Check if a callback function was provided by the client.
+        if (callback && typeof callback === 'function') {
+            console.log('[LOG] Valid callback function found. Sending "ok" status back.');
+            // Send the "OK" acknowledgement back ONLY to the player who sent the update.
             callback({ status: 'ok' });
+        } else {
+            // THIS IS THE CRITICAL PART FOR DEBUGGING
+            console.log('[WARNING] No valid callback function received from the client for this update.');
         }
     });
 
