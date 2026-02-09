@@ -299,8 +299,9 @@ To re-enable it, delete the /% on the first line and the %/ on the last line.
   &lt;&lt;set $Hero to _shuffledItems.pop()&gt;&gt;
   &lt;&lt;set $Villain to _shuffledItems.pop()&gt;&gt;
 &lt;&lt;/silently&gt;&gt;
-%/
 */
+%/
+
 socket.on(&#39;loadDefaults&#39;, (defaults) =&gt; {
   for (const key in defaults) {
     State.variables[key] = defaults[key];
