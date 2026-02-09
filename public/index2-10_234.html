@@ -358,7 +358,7 @@ socket.on(&#39;loadDefaults&#39;, (defaults) =&gt; {
         &lt;&lt;linkreplace &quot;choose&quot;&gt;&gt;
           &lt;&lt;for _item range $allItems&gt;&gt;&lt;&lt;if not _used.includes(_item)&gt;&gt;&lt;&lt;capture _item&gt;&gt;&lt;&lt;link _item&gt;&gt;&lt;&lt;set $Protagonist to _item&gt;&gt;
 &lt;script&gt;
-  window.updateGlobalVariable(&quot;Protagonist&quot;, State.variables.Protagonist);
+  window.updateGlobalVariable(&quot;Protagonist&quot;, _item);
 &lt;/script&gt;
 &lt;&lt;goto &quot;EditSystem&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/capture&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/for&gt;&gt;
         &lt;&lt;/linkreplace&gt;&gt;
@@ -386,7 +386,7 @@ socket.on(&#39;loadDefaults&#39;, (defaults) =&gt; {
         &lt;span style=&quot;font-size:1.5em; color:green;&quot;&gt;&lt;&lt;print $Geography&gt;&gt;&lt;/span&gt;&lt;br&gt;
         &lt;&lt;linkreplace &quot;(change)&quot;&gt;&gt;
           &lt;&lt;for _item range $allItems&gt;&gt;&lt;&lt;if not _used.includes(_item) or _item is $Geography&gt;&gt;&lt;&lt;capture _item&gt;&gt;&lt;&lt;link _item&gt;&gt;&lt;&lt;set $Geography to _item&gt;&gt;&lt;script&gt;
-  window.updateGlobalVariable(&quot;Geography&quot;, State.variables.Geography);
+  window.updateGlobalVariable(&quot;Geography&quot;, _item);
 &lt;/script&gt;&lt;&lt;goto &quot;EditSystem&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/capture&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/for&gt;&gt;
           &lt;br&gt;&lt;&lt;link &quot;— none —&quot;&gt;&gt;&lt;&lt;set $Geography to &quot;&quot;&gt;&gt;&lt;&lt;goto &quot;EditSystem&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
         &lt;&lt;/linkreplace&gt;&gt;
@@ -406,7 +406,7 @@ socket.on(&#39;loadDefaults&#39;, (defaults) =&gt; {
         &lt;span style=&quot;font-size:1.5em; color:green;&quot;&gt;&lt;&lt;print $Climate&gt;&gt;&lt;/span&gt;&lt;br&gt;
         &lt;&lt;linkreplace &quot;(change)&quot;&gt;&gt;
           &lt;&lt;for _item range $allItems&gt;&gt;&lt;&lt;if not _used.includes(_item) or _item is $Climate&gt;&gt;&lt;&lt;capture _item&gt;&gt;&lt;&lt;link _item&gt;&gt;&lt;&lt;set $Climate to _item&gt;&gt;&lt;script&gt;
-  window.updateGlobalVariable(&quot;Climate&quot;, State.variables.Climate);
+  window.updateGlobalVariable(&quot;Climate&quot;, _item);
 &lt;/script&gt;&lt;&lt;goto &quot;EditSystem&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/capture&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/for&gt;&gt;
           &lt;br&gt;&lt;&lt;link &quot;— none —&quot;&gt;&gt;&lt;&lt;set $Climate to &quot;&quot;&gt;&gt;&lt;&lt;goto &quot;EditSystem&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
         &lt;&lt;/linkreplace&gt;&gt;
@@ -426,7 +426,7 @@ socket.on(&#39;loadDefaults&#39;, (defaults) =&gt; {
         &lt;span style=&quot;font-size:1.5em; color:green;&quot;&gt;&lt;&lt;print $Species&gt;&gt;&lt;/span&gt;&lt;br&gt;
         &lt;&lt;linkreplace &quot;(change)&quot;&gt;&gt;
           &lt;&lt;for _item range $allItems&gt;&gt;&lt;&lt;if not _used.includes(_item) or _item is $Species&gt;&gt;&lt;&lt;capture _item&gt;&gt;&lt;&lt;link _item&gt;&gt;&lt;&lt;set $Species to _item&gt;&gt;&lt;script&gt;
-  window.updateGlobalVariable(&quot;Species&quot;, State.variables.Species);
+  window.updateGlobalVariable(&quot;Species&quot;, _item);
 &lt;/script&gt;&lt;&lt;goto &quot;EditSystem&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/capture&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/for&gt;&gt;
           &lt;br&gt;&lt;&lt;link &quot;— none —&quot;&gt;&gt;&lt;&lt;set $Species to &quot;&quot;&gt;&gt;&lt;&lt;goto &quot;EditSystem&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
         &lt;&lt;/linkreplace&gt;&gt;
@@ -446,7 +446,7 @@ socket.on(&#39;loadDefaults&#39;, (defaults) =&gt; {
         &lt;span style=&quot;font-size:1.5em; color:green;&quot;&gt;&lt;&lt;print $Language&gt;&gt;&lt;/span&gt;&lt;br&gt;
         &lt;&lt;linkreplace &quot;(change)&quot;&gt;&gt;
           &lt;&lt;for _item range $allItems&gt;&gt;&lt;&lt;if not _used.includes(_item) or _item is $Language&gt;&gt;&lt;&lt;capture _item&gt;&gt;&lt;&lt;link _item&gt;&gt;&lt;&lt;set $Language to _item&gt;&gt;&lt;script&gt;
-  window.updateGlobalVariable(&quot;Language&quot;, State.variables.Language);
+  window.updateGlobalVariable(&quot;Language&quot;, _item);
 &lt;/script&gt;&lt;&lt;goto &quot;EditSystem&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/capture&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/for&gt;&gt;
           &lt;br&gt;&lt;&lt;link &quot;— none —&quot;&gt;&gt;&lt;&lt;set $Language to &quot;&quot;&gt;&gt;&lt;&lt;goto &quot;EditSystem&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
         &lt;&lt;/linkreplace&gt;&gt;
@@ -466,7 +466,7 @@ socket.on(&#39;loadDefaults&#39;, (defaults) =&gt; {
         &lt;span style=&quot;font-size:1.5em; color:green;&quot;&gt;&lt;&lt;print $Religion&gt;&gt;&lt;/span&gt;&lt;br&gt;
         &lt;&lt;linkreplace &quot;(change)&quot;&gt;&gt;
           &lt;&lt;for _item range $allItems&gt;&gt;&lt;&lt;if not _used.includes(_item) or _item is $Religion&gt;&gt;&lt;&lt;capture _item&gt;&gt;&lt;&lt;link _item&gt;&gt;&lt;&lt;set $Religion to _item&gt;&gt;&lt;script&gt;
-          window.updateGlobalVariable(&quot;Religion&quot;, State.variables.Religion);
+          window.updateGlobalVariable(&quot;Religion&quot;, _item);
         &lt;/script&gt;&lt;&lt;goto &quot;EditSystem&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/capture&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/for&gt;&gt;
           &lt;br&gt;&lt;&lt;link &quot;— none —&quot;&gt;&gt;&lt;&lt;set $Religion to &quot;&quot;&gt;&gt;&lt;&lt;goto &quot;EditSystem&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
         &lt;&lt;/linkreplace&gt;&gt;
@@ -486,7 +486,7 @@ socket.on(&#39;loadDefaults&#39;, (defaults) =&gt; {
         &lt;span style=&quot;font-size:1.5em; color:green;&quot;&gt;&lt;&lt;print $Entertainment&gt;&gt;&lt;/span&gt;&lt;br&gt;
         &lt;&lt;linkreplace &quot;(change)&quot;&gt;&gt;
           &lt;&lt;for _item range $allItems&gt;&gt;&lt;&lt;if not _used.includes(_item) or _item is $Entertainment&gt;&gt;&lt;&lt;capture _item&gt;&gt;&lt;&lt;link _item&gt;&gt;&lt;&lt;set $Entertainment to _item&gt;&gt;&lt;script&gt;
-  window.updateGlobalVariable(&quot;Entertainment&quot;, State.variables.Entertainment);
+  window.updateGlobalVariable(&quot;Entertainment&quot;, _item);
 &lt;/script&gt;&lt;&lt;goto &quot;EditSystem&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/capture&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/for&gt;&gt;
           &lt;br&gt;&lt;&lt;link &quot;— none —&quot;&gt;&gt;&lt;&lt;set $Entertainment to &quot;&quot;&gt;&gt;&lt;&lt;goto &quot;EditSystem&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
         &lt;&lt;/linkreplace&gt;&gt;
@@ -506,7 +506,7 @@ socket.on(&#39;loadDefaults&#39;, (defaults) =&gt; {
         &lt;span style=&quot;font-size:1.5em; color:green;&quot;&gt;&lt;&lt;print $Military&gt;&gt;&lt;/span&gt;&lt;br&gt;
         &lt;&lt;linkreplace &quot;(change)&quot;&gt;&gt;
           &lt;&lt;for _item range $allItems&gt;&gt;&lt;&lt;if not _used.includes(_item) or _item is $Military&gt;&gt;&lt;&lt;capture _item&gt;&gt;&lt;&lt;link _item&gt;&gt;&lt;&lt;set $Military to _item&gt;&gt;&lt;script&gt;
-  window.updateGlobalVariable(&quot;Military&quot;, State.variables.Military);
+  window.updateGlobalVariable(&quot;Military&quot;, _item);
 &lt;/script&gt;&lt;&lt;goto &quot;EditSystem&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/capture&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/for&gt;&gt;
           &lt;br&gt;&lt;&lt;link &quot;— none —&quot;&gt;&gt;&lt;&lt;set $Military to &quot;&quot;&gt;&gt;&lt;&lt;goto &quot;EditSystem&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
         &lt;&lt;/linkreplace&gt;&gt;
@@ -526,7 +526,7 @@ socket.on(&#39;loadDefaults&#39;, (defaults) =&gt; {
         &lt;span style=&quot;font-size:1.5em; color:green;&quot;&gt;&lt;&lt;print $Currency&gt;&gt;&lt;/span&gt;&lt;br&gt;
         &lt;&lt;linkreplace &quot;(change)&quot;&gt;&gt;
           &lt;&lt;for _item range $allItems&gt;&gt;&lt;&lt;if not _used.includes(_item) or _item is $Currency&gt;&gt;&lt;&lt;capture _item&gt;&gt;&lt;&lt;link _item&gt;&gt;&lt;&lt;set $Currency to _item&gt;&gt;&lt;script&gt;
-  window.updateGlobalVariable(&quot;Currency&quot;, State.variables.Currency);
+  window.updateGlobalVariable(&quot;Currency&quot;, _item);
 &lt;/script&gt;&lt;&lt;goto &quot;EditSystem&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/capture&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/for&gt;&gt;
           &lt;br&gt;&lt;&lt;link &quot;— none —&quot;&gt;&gt;&lt;&lt;set $Currency to &quot;&quot;&gt;&gt;&lt;&lt;goto &quot;EditSystem&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
         &lt;&lt;/linkreplace&gt;&gt;
@@ -546,7 +546,7 @@ socket.on(&#39;loadDefaults&#39;, (defaults) =&gt; {
         &lt;span style=&quot;font-size:1.5em; color:green;&quot;&gt;&lt;&lt;print $Transport&gt;&gt;&lt;/span&gt;&lt;br&gt;
         &lt;&lt;linkreplace &quot;(change)&quot;&gt;&gt;
           &lt;&lt;for _item range $allItems&gt;&gt;&lt;&lt;if not _used.includes(_item) or _item is $Transport&gt;&gt;&lt;&lt;capture _item&gt;&gt;&lt;&lt;link _item&gt;&gt;&lt;&lt;set $Transport to _item&gt;&gt;&lt;script&gt;
-  window.updateGlobalVariable(&quot;Transport&quot;, State.variables.Transport);
+  window.updateGlobalVariable(&quot;Transport&quot;, _item);
 &lt;/script&gt;&lt;&lt;goto &quot;EditSystem&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/capture&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/for&gt;&gt;
           &lt;br&gt;&lt;&lt;link &quot;— none —&quot;&gt;&gt;&lt;&lt;set $Transport to &quot;&quot;&gt;&gt;&lt;&lt;goto &quot;EditSystem&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
         &lt;&lt;/linkreplace&gt;&gt;
@@ -565,7 +565,7 @@ socket.on(&#39;loadDefaults&#39;, (defaults) =&gt; {
       &lt;&lt;else&gt;&gt;
         &lt;span style=&quot;font-size:1.5em; color:green;&quot;&gt;&lt;&lt;print $Architecture&gt;&gt;&lt;/span&gt;&lt;br&gt;
         &lt;&lt;linkreplace &quot;(change)&quot;&gt;&gt;
-          &lt;&lt;for _item range $allItems&gt;&gt;&lt;&lt;if not _used.includes(_item) or _item is $Architecture&gt;&gt;&lt;&lt;capture _item&gt;&gt;&lt;&lt;link _item&gt;&gt;&lt;&lt;set $Architecture to State.variables.Architecture&gt;&gt;&lt;script&gt;
+          &lt;&lt;for _item range $allItems&gt;&gt;&lt;&lt;if not _used.includes(_item) or _item is $Architecture&gt;&gt;&lt;&lt;capture _item&gt;&gt;&lt;&lt;link _item&gt;&gt;&lt;&lt;set $Architecture to _item&gt;&gt;&lt;script&gt;
   window.updateGlobalVariable(&quot;Architecture&quot;, _item);
 &lt;/script&gt;&lt;&lt;goto &quot;EditSystemt&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/capture&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/for&gt;&gt;
           &lt;br&gt;&lt;&lt;link &quot;— none —&quot;&gt;&gt;&lt;&lt;set $Architecture to &quot;&quot;&gt;&gt;&lt;&lt;goto &quot;EditSystem&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
@@ -585,7 +585,7 @@ socket.on(&#39;loadDefaults&#39;, (defaults) =&gt; {
       &lt;&lt;else&gt;&gt;
         &lt;span style=&quot;font-size:1.5em; color:green;&quot;&gt;&lt;&lt;print $Time&gt;&gt;&lt;/span&gt;&lt;br&gt;
         &lt;&lt;linkreplace &quot;(change)&quot;&gt;&gt;
-          &lt;&lt;for _item range $allItems&gt;&gt;&lt;&lt;if not _used.includes(_item) or _item is $Time&gt;&gt;&lt;&lt;capture _item&gt;&gt;&lt;&lt;link _item&gt;&gt;&lt;&lt;set $Time to State.variables.Time&gt;&gt;&lt;script&gt;
+          &lt;&lt;for _item range $allItems&gt;&gt;&lt;&lt;if not _used.includes(_item) or _item is $Time&gt;&gt;&lt;&lt;capture _item&gt;&gt;&lt;&lt;link _item&gt;&gt;&lt;&lt;set $Time to _item&gt;&gt;&lt;script&gt;
   window.updateGlobalVariable(&quot;Time&quot;, _item);
 &lt;/script&gt;&lt;&lt;goto &quot;EditSystem&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/capture&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/for&gt;&gt;
           &lt;br&gt;&lt;&lt;link &quot;— none —&quot;&gt;&gt;&lt;&lt;set $Time to &quot;&quot;&gt;&gt;&lt;&lt;goto &quot;EditSystem&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
@@ -605,7 +605,7 @@ socket.on(&#39;loadDefaults&#39;, (defaults) =&gt; {
       &lt;&lt;else&gt;&gt;
         &lt;span style=&quot;font-size:1.5em; color:green;&quot;&gt;&lt;&lt;print $Hero&gt;&gt;&lt;/span&gt;&lt;br&gt;
         &lt;&lt;linkreplace &quot;(change)&quot;&gt;&gt;
-          &lt;&lt;for _item range $allItems&gt;&gt;&lt;&lt;if not _used.includes(_item) or _item is $Hero&gt;&gt;&lt;&lt;capture _item&gt;&gt;&lt;&lt;link _item&gt;&gt;&lt;&lt;set $Hero to State.variables.Hero&gt;&gt;&lt;script&gt;
+          &lt;&lt;for _item range $allItems&gt;&gt;&lt;&lt;if not _used.includes(_item) or _item is $Hero&gt;&gt;&lt;&lt;capture _item&gt;&gt;&lt;&lt;link _item&gt;&gt;&lt;&lt;set $Hero to _item&gt;&gt;&lt;script&gt;
   window.updateGlobalVariable(&quot;Hero&quot;, _item);
 &lt;/script&gt;&lt;&lt;goto &quot;EditSystem&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/capture&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/for&gt;&gt;
           &lt;br&gt;&lt;&lt;link &quot;— none —&quot;&gt;&gt;&lt;&lt;set $Hero to &quot;&quot;&gt;&gt;&lt;&lt;goto &quot;EditSystem&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
@@ -625,7 +625,7 @@ socket.on(&#39;loadDefaults&#39;, (defaults) =&gt; {
       &lt;&lt;else&gt;&gt;
         &lt;span style=&quot;font-size:1.5em; color:green;&quot;&gt;&lt;&lt;print $Villain&gt;&gt;&lt;/span&gt;&lt;br&gt;
         &lt;&lt;linkreplace &quot;(change)&quot;&gt;&gt;
-          &lt;&lt;for _item range $allItems&gt;&gt;&lt;&lt;if not _used.includes(_item) or _item is $Villain&gt;&gt;&lt;&lt;capture _item&gt;&gt;&lt;&lt;link _item&gt;&gt;&lt;&lt;set $Villain to State.variables.Villain&gt;&gt;&lt;script&gt;
+          &lt;&lt;for _item range $allItems&gt;&gt;&lt;&lt;if not _used.includes(_item) or _item is $Villain&gt;&gt;&lt;&lt;capture _item&gt;&gt;&lt;&lt;link _item&gt;&gt;&lt;&lt;set $Villain to _item&gt;&gt;&lt;script&gt;
   window.updateGlobalVariable(&quot;Villain&quot;, _item);
 &lt;/script&gt;&lt;&lt;goto &quot;EditSystem&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/capture&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/for&gt;&gt;
           &lt;br&gt;&lt;&lt;link &quot;— none —&quot;&gt;&gt;&lt;&lt;set $Villain to &quot;&quot;&gt;&gt;&lt;&lt;goto &quot;EditSystem&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
