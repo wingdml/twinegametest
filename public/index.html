@@ -35,6 +35,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 -->
 <script src="/socket.io/socket.io.js"></script>
+
 <script id="script-libraries" type="text/javascript">
 if(document.head&&document.addEventListener&&document.querySelector&&Object.create&&Object.freeze&&JSON){document.documentElement.setAttribute("data-init", "loading");
 /*! @source http://purl.eligrey.com/github/classList.js/blob/1.2.20171210/classList.js */
@@ -357,16 +358,14 @@ socket.on(&#39;loadDefaults&#39;, (defaults) =&gt; {
       &lt;&lt;if $Protagonist is &quot;&quot;&gt;&gt;
         &lt;&lt;linkreplace &quot;choose&quot;&gt;&gt;
           &lt;&lt;for _item range $allItems&gt;&gt;&lt;&lt;if not _used.includes(_item)&gt;&gt;&lt;&lt;capture _item&gt;&gt;&lt;&lt;link _item&gt;&gt;&lt;&lt;set $Protagonist to _item&gt;&gt;
-&lt;script&gt;
-  window.updateGlobalVariable(&quot;Protagonist&quot;, State.variables.Protagonist);
-&lt;/script&gt;
+
 &lt;&lt;goto &quot;EditSystem&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/capture&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/for&gt;&gt;
         &lt;&lt;/linkreplace&gt;&gt;
       &lt;&lt;else&gt;&gt;
         &lt;span style=&quot;font-size:1.5em; color:green;&quot;&gt;&lt;&lt;print $Protagonist&gt;&gt;&lt;/span&gt;&lt;br&gt;
         &lt;&lt;linkreplace &quot;(change)&quot;&gt;&gt;
           &lt;&lt;for _item range $allItems&gt;&gt;&lt;&lt;if not _used.includes(_item) or _item is $Protagonist&gt;&gt;&lt;&lt;capture _item&gt;&gt;&lt;&lt;link _item&gt;&gt;&lt;&lt;set $Protagonist to _item&gt;&gt;&lt;script&gt;
-  window.updateGlobalVariable(&quot;Protagonist&quot;, _item);
+  window.updateGlobalVariable(&quot;Protagonist&quot;, State.variables.Protagonist);
 &lt;/script&gt;&lt;&lt;goto &quot;EditSystem&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/capture&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/for&gt;&gt;
           &lt;br&gt;&lt;&lt;link &quot;— none —&quot;&gt;&gt;&lt;&lt;set $Protagonist to &quot;&quot;&gt;&gt;&lt;&lt;goto &quot;EditSystem&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
         &lt;&lt;/linkreplace&gt;&gt;
@@ -565,8 +564,8 @@ socket.on(&#39;loadDefaults&#39;, (defaults) =&gt; {
       &lt;&lt;else&gt;&gt;
         &lt;span style=&quot;font-size:1.5em; color:green;&quot;&gt;&lt;&lt;print $Architecture&gt;&gt;&lt;/span&gt;&lt;br&gt;
         &lt;&lt;linkreplace &quot;(change)&quot;&gt;&gt;
-          &lt;&lt;for _item range $allItems&gt;&gt;&lt;&lt;if not _used.includes(_item) or _item is $Architecture&gt;&gt;&lt;&lt;capture _item&gt;&gt;&lt;&lt;link _item&gt;&gt;&lt;&lt;set $Architecture to State.variables.Architecture&gt;&gt;&lt;script&gt;
-  window.updateGlobalVariable(&quot;Architecture&quot;, _item);
+          &lt;&lt;for _item range $allItems&gt;&gt;&lt;&lt;if not _used.includes(_item) or _item is $Architecture&gt;&gt;&lt;&lt;capture _item&gt;&gt;&lt;&lt;link _item&gt;&gt;&lt;&lt;set $Architecture to _item&gt;&gt;&lt;script&gt;
+  window.updateGlobalVariable(&quot;Architecture&quot;, State.variables.Architecture);
 &lt;/script&gt;&lt;&lt;goto &quot;EditSystemt&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/capture&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/for&gt;&gt;
           &lt;br&gt;&lt;&lt;link &quot;— none —&quot;&gt;&gt;&lt;&lt;set $Architecture to &quot;&quot;&gt;&gt;&lt;&lt;goto &quot;EditSystem&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
         &lt;&lt;/linkreplace&gt;&gt;
