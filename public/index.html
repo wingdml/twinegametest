@@ -584,8 +584,8 @@ socket.on(&#39;loadDefaults&#39;, (defaults) =&gt; {
       &lt;&lt;else&gt;&gt;
         &lt;span style=&quot;font-size:1.5em; color:green;&quot;&gt;&lt;&lt;print $Time&gt;&gt;&lt;/span&gt;&lt;br&gt;
         &lt;&lt;linkreplace &quot;(change)&quot;&gt;&gt;
-          &lt;&lt;for _item range $allItems&gt;&gt;&lt;&lt;if not _used.includes(_item) or _item is $Time&gt;&gt;&lt;&lt;capture _item&gt;&gt;&lt;&lt;link _item&gt;&gt;&lt;&lt;set $Time to State.variables.Time&gt;&gt;&lt;script&gt;
-  window.updateGlobalVariable(&quot;Time&quot;, _item);
+          &lt;&lt;for _item range $allItems&gt;&gt;&lt;&lt;if not _used.includes(_item) or _item is $Time&gt;&gt;&lt;&lt;capture _item&gt;&gt;&lt;&lt;link _item&gt;&gt;&lt;&lt;set $Time to _item&gt;&gt;&lt;script&gt;
+  window.updateGlobalVariable(&quot;Time&quot;, State.variables.Time);
 &lt;/script&gt;&lt;&lt;goto &quot;EditSystem&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/capture&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/for&gt;&gt;
           &lt;br&gt;&lt;&lt;link &quot;— none —&quot;&gt;&gt;&lt;&lt;set $Time to &quot;&quot;&gt;&gt;&lt;&lt;goto &quot;EditSystem&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
         &lt;&lt;/linkreplace&gt;&gt;
