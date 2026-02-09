@@ -41,11 +41,21 @@ io.on('connection', (socket) => {
   socket.emit('loadMessages', messages);
 
   // Listen for updates from players
-  socket.on('updateVariable', ({ key, value }) => {
-    console.log("Update received:", key, value); 
-    globalDefaults[key] = value; // update server state
-    io.emit('loadDefaults', globalDefaults); // broadcast to all players
-  });
+  // in server.js
+
+socket.on('updateVariable', ({ key, value }, callback) => { // <-- Add 'callback' here
+  console.log(`Update received from a client -> Key: ${key}, Value: ${value}`);
+  
+  globalDefaults[key] = value; // update server state
+  
+  // This broadcasts the change to EVERYONE (including the sender)
+  io.emit('loadDefaults', globalDefaults); 
+  
+  // This sends an acknowledgement back ONLY to the original sender
+  if (callback) {
+    callback({ status: 'ok' });
+  }
+});
 
   // Listen for new messages
   socket.on('playerMessage', (msg) => {
