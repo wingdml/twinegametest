@@ -11,6 +11,7 @@ app.use(express.static('public'));
 
 // Handle player connections
 const messages = []; // store all messages in memory
+// Store global defaults for shared variables
 
 const globalDefaults = {
   Protagonist: "human",
@@ -36,21 +37,14 @@ io.on('connection', (socket) => {
 
   // Send current defaults to new player
   socket.emit('loadDefaults', globalDefaults);
+    // Send existing messages to the new client
+  socket.emit('loadMessages', messages);
 
   // Listen for updates from players
   socket.on('updateVariable', ({ key, value }) => {
     globalDefaults[key] = value; // update server state
     io.emit('loadDefaults', globalDefaults); // broadcast to all players
   });
-});
-
-
-
-io.on('connection', (socket) => {
-  console.log('A player connected');
-
-  // Send existing messages to the new client
-  socket.emit('loadMessages', messages);
 
   // Listen for new messages
   socket.on('playerMessage', (msg) => {
